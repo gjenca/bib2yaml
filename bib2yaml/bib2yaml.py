@@ -3,7 +3,6 @@
 import yaml
 import sys
 from pybtex.database.input import bibtex
-sane_yaml=yaml
 import re
 import tempfile
 import unicodedata
