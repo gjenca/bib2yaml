@@ -10,7 +10,7 @@ import argparse
 from io import StringIO
 from bib2yaml.misc import strip_accents
 import logging
-import bib2yaml.titlecase as titlecase
+from bib2yaml.titlecase import titlecase
 
 def readpubs(f,ns):
 
@@ -40,8 +40,8 @@ def readpubs(f,ns):
             if "title" not in pub:
                 pub["title"]="NOTITLE"
             if "pages" in pub:
-                if "-" in  pub["pages"]:
-                    pub["startpage"],pub["endpage"]=[x for x in re.split('-+',pub["pages"],maxsplit=1)]
+                if "-" in pub["pages"] or "–" in pub["pages"]:
+                    pub["startpage"],pub["endpage"]=[x for x in re.split('[-–]+',pub["pages"],maxsplit=1)]
                 else:
                     pub["startpage"]=pub["pages"]
                     pub["endpage"]=pub["pages"]
