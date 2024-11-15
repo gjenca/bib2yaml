@@ -14,8 +14,8 @@ import re
 __all__ = ['titlecase']
 
 
-SMALL = 'a|an|and|as|at|but|by|en|for|if|in|of|on|or|the|to|v\.?|via|vs\.?'
-PUNCT = "[!\"#$%&'‘()*+,-./:;?@[\\\\\\]_`{|}~]"
+SMALL = r'a|an|and|as|at|but|by|en|for|if|in|of|on|or|the|to|v\.?|via|vs\.?'
+PUNCT = r"[!\"#$%&'‘()*+,-./:;?@[\\\\\\]_`{|}~]"
 
 SMALL_WORDS = re.compile(r'^(%s)$' % SMALL, re.I)
 INLINE_PERIOD = re.compile(r'[a-zA-Z][.][a-zA-Z]')
