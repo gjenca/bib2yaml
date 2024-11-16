@@ -21,7 +21,6 @@ def readpubs(f,ns):
     for entry in bib_data.entries.values():
         try:
             pub={}
-            pub["type"]=entry.type.lower()
             if entry.persons:
                 pub["authors"]=list(map(str,entry.persons['author']))
             else:
@@ -48,7 +47,7 @@ def readpubs(f,ns):
                 del pub["pages"]
             for fname in pub:
                 try:
-                    if type(pub[fname]) in (str,str):
+                    if type(pub[fname]) is str:
                         pub[fname]=int(pub[fname])
                 except ValueError:
                     pass
@@ -57,6 +56,7 @@ def readpubs(f,ns):
             if "art_number" in pub:
                 pub["article_number"]=pub["art_number"]
                 del pub["art_number"]
+            pub["type"]=entry.type.lower()
             ret.append(pub)
         except:
             print("error in",entry)
